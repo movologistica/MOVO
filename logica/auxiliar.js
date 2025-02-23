@@ -135,7 +135,6 @@ function enviarIngreso() {
     rowNumber = response.result.updates.updatedRange.match(/\d+$/)[0]; // Obtener el número de fila actualizado
     localStorage.setItem('estadoIngreso', JSON.stringify({ rowNumber }));
     bloquearCampos();
-    alert('Ingreso enviado'); // Añadir alerta aquí
   }, (error) => {
     console.error('Error al enviar los datos:', error);
     alert('Error al enviar los datos. Por favor, intente nuevamente.');
@@ -165,7 +164,6 @@ function enviarSalida() {
     console.log(`${response.result.updatedCells} celdas actualizadas.`);
     localStorage.removeItem('estadoIngreso');
     desbloquearCampos();
-    alert('Salida enviada'); // Añadir alerta aquí
   }, (error) => {
     console.error('Error al enviar los datos:', error);
     alert('Error al enviar los datos. Por favor, intente nuevamente.');
