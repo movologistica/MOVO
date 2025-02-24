@@ -79,3 +79,11 @@ const SPREADSHEET_ID = '1I1Vpm2T0bX-3R6CT_1J4sG2kmcFbel8HDBiInkgAtng';
       window.location.href = "../paginas/auxiliar.html";
     });
   });
+
+  // entrar a formulario Urbano
+  document.addEventListener("DOMContentLoaded", function() {
+    const btnFormUrbano = document.getElementById("operaUrbano");
+    btnFormUrbano.addEventListener('click', function() {
+      window.location.href = "../paginas/formularioUrbano.html";
+    });
+  });
