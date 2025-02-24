@@ -165,7 +165,7 @@ function enviarSalida() {
     console.log(`${response.result.updatedCells} celdas actualizadas.`);
     localStorage.removeItem('estadoIngreso');
     desbloquearCampos();
-    alert('Salida enviada'); // Añadir alerta aquí
+    //alert('Salida enviada'); // Añadir alerta aquí
   }, (error) => {
     console.error('Error al enviar los datos:', error);
     alert('Error al enviar los datos. Por favor, intente nuevamente.');

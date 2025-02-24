@@ -7,3 +7,8 @@ document.getElementById("buttonEmpleado").addEventListener('click', function(){
 document.getElementById("buttonTercero").addEventListener('click', function(){
     window.location.href = "paginas/tercero.html";
 });
+
+//inicio como cliente
+document.getElementById("buttonCliente").addEventListener('click', function(){
+    window.location.href = "paginas/cliente.html";
+});
