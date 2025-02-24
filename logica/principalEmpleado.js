@@ -80,10 +80,10 @@ const SPREADSHEET_ID = '1I1Vpm2T0bX-3R6CT_1J4sG2kmcFbel8HDBiInkgAtng';
     });
   });
 
-  // entrar a formulario Urbano
+  // entrar a conductor
   document.addEventListener("DOMContentLoaded", function() {
-    const btnFormUrbano = document.getElementById("operaUrbano");
+    const btnFormUrbano = document.getElementById("conductor");
     btnFormUrbano.addEventListener('click', function() {
-      window.location.href = "../paginas/formularioUrbano.html";
+      window.location.href = "../paginas/conductor.html";
     });
   });

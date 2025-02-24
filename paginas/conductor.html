@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../estilos/conductor.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <title>Urbanos</title>
+</head>
+
+<body>
+  <h1>Registro de Horarios</h1>
+
+  <!--botones de interaccion-->
+  <fieldset id="condInfo">
+    <legend>Información del Conductor</legend>
+    <label for="cedula" id="titleCedulaCond">Cédula:</label><br>
+    <input type="number" id="cedulaCond" name="cedula"><br><br>
+
+    <label for="nombreCompleto"></label>
+    <input type="text" id="nombreCompletoCond" name="nombreCompleto" readonly><br><br>
+  </fieldset>
+
+
+  <button id="btninicioLabores" class="btnmodal">Reportar inicio de labores</button>
+  <button id="btnllegadaCargue" class="btnmodal">Reportar llegada al cargue</button>
+  <button id="btninicioCargue" class="btnmodal">Reportar inicio del cargue</button>
+  <button id="btnfinCargue" class="btnmodal">Reportar salida del cargue</button>
+  <button id="btnllegadaDescargue" class="btnmodal">Reportar llegada al descargue</button>
+  <button id="btninicioDescargue" class="btnmodal">Reportar inicio del descargue</button>
+  <button id="btnfinDescargue" class="btnmodal">Reportar salida del descargue</button>
+  <button id="btnfinLabores" class="btnmodal">Reportar terminación de labores</button><br><br>
+
+  <!--Modales-->
+  <div id="modalInicioLabores" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalinicioLabores">&times;</span>
+      <h2>Inicio de labores</h2>
+      <form>
+        <label for="fechaIngreso">Fecha de Ingreso:</label><br>
+        <input type="date" id="icioLabores" name="fechaIngreso" readonly><br><br>
+        <label for="horaIngreso">Hora de Ingreso:</label><br>
+        <input type="time" id="horaIniciolabores" name="horaIngreso" required><br>
+        <button type="button" id="obtnerHoraIngreso">Obtener Hora Actual</button><br><br>
+        <button id="enviarInicioLabores">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Botón de Cerrar Sesión -->
+  <button type="button" id="cerrarSesionUrbano">Cerrar Sesión</button>
+  <button type="button" id="regresarPrincipalEmpelado">Regresar</button>
+  </form>
+  <script src="../logica/conductor.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("../service-worker.js")
+        .then(() => console.log("Service Worker registrado"))
+        .catch(err => console.error("Error al registrar Service Worker", err));
+    }
+  </script>
+</body>
+
+</html>
