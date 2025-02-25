@@ -8,15 +8,24 @@ let gisInited = false;
 
 //funcionalidad de botones
 document.addEventListener('DOMContentLoaded', () => {
+
     const cedula = localStorage.getItem('cedulaUsuario');
+    const nombre = localStorage.getItem('nombreCompletoCond');
     if (cedula) {
         document.getElementById('cedulaCond').value = cedula;
-        buscarNombreCond(); // Llama a la función para buscar el nombre automáticamente
+        if (nombre) {
+            document.getElementById('nombreCompletoCond').value = nombre;
+        } else if (gapiInited) {
+            buscarNombreCond(); // Llama a la función para buscar el nombre automáticamente
+        }
     }
+    verificarEstadoBotonesBloqueados();
 
-    verificarEstadoBotones();
-
-    document.getElementById('cedulaCond').addEventListener('change', buscarNombreCond);
+    document.getElementById('cedulaCond').addEventListener('change', () => {
+        if (gapiInited) {
+            buscarNombreCond();
+        }
+    });
     document.getElementById('obtnerHoraIngreso').addEventListener('click', horaActialInicioLabores);
     document.getElementById('btninicioLabores').addEventListener('click', fechaInicioLabores);
     document.getElementById('enviarInicioLabores').addEventListener('click', enviarInicioLabores);
@@ -35,11 +44,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.getElementById('btnfinLabores').addEventListener('click', fechaFinLabores);
     document.getElementById('obtnerHoraFinLabores').addEventListener('click', horaActualFinLabores);
     document.getElementById('enviarFinLabores').addEventListener('click', enviarFinLabores);
-    
 
     //boton cerrar sesion
-  document.getElementById('cerrarSesionCond').addEventListener('click', cerrarSesion);
-  document.getElementById('regresarPrincipalEmpelado').addEventListener('click', regresarPageAnterior);
+    document.getElementById('cerrarSesionCond').addEventListener('click', cerrarSesion);
+    document.getElementById('regresarPrincipalEmpelado').addEventListener('click', regresarPageAnterior);
 
     gapiLoaded();
     gisLoaded();
@@ -47,55 +55,63 @@ document.addEventListener('DOMContentLoaded', () => {
 
 function gapiLoaded() {
     gapi.load('client', initializeGapiClient);
-  }
+}
   
-  function gisLoaded() {
+function gisLoaded() {
     tokenClient = google.accounts.oauth2.initTokenClient({
-      client_id: CLIENT_ID,
-      scope: 'https://www.googleapis.com/auth/spreadsheets',
-      callback: (tokenResponse) => {
-        console.log('Token acquired:', tokenResponse);
-        localStorage.setItem('authToken', tokenResponse.access_token);
-      },
+        client_id: CLIENT_ID,
+        scope: 'https://www.googleapis.com/auth/spreadsheets',
+        callback: (tokenResponse) => {
+            console.log('Token acquired:', tokenResponse);
+            localStorage.setItem('authToken', tokenResponse.access_token);
+        },
     });
     gisInited = true;
-  }
+}
   
   function initializeGapiClient() {
     gapi.client.init({
-      apiKey: API_KEY,
-      discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
+        apiKey: API_KEY,
+        discoveryDocs: ['https://sheets.googleapis.com/$discovery/rest?version=v4'],
     }).then(() => {
-      gapiInited = true;
-      const token = localStorage.getItem('authToken');
-      if (token) {
-        gapi.client.setToken({
-          access_token: token
-        });
-      } else {
-        if (gisInited) {
-            tokenClient.requestAccessToken({ prompt: 'consent' });
+        gapiInited = true;
+        const token = localStorage.getItem('authToken');
+        if (token) {
+            gapi.client.setToken({
+                access_token: token
+            });
+        } else {
+            if (gisInited) {
+                tokenClient.requestAccessToken({ prompt: 'consent' });
+            }
         }
-      }
+        // Llama a buscarNombreCond si la cédula ya está almacenada
+        const cedula = localStorage.getItem('cedulaUsuario');
+        if (cedula) {
+            buscarNombreCond();
+        }
     });
-  }
+}
   
   //buscar el nombre en base de datos
   function buscarNombreCond() {
     const cedula = document.getElementById('cedulaCond').value;
     if (cedula) {
-      gapi.client.sheets.spreadsheets.values.get({
-        spreadsheetId: SPREADSHEET_ID,
-        range: 'basededatos!A:B',
-      }).then(response => {
-        const rows = response.result.values;
-        const user = rows.find(row => row[0] === cedula);
-        document.getElementById('nombreCompletoCond').value = user ? user[1] : '';
-      });
+        localStorage.setItem('cedulaUsuario', cedula); // Almacenar la cédula en localStorage
+        gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: SPREADSHEET_ID,
+            range: 'basededatos!A:B',
+        }).then(response => {
+            const rows = response.result.values;
+            const user = rows.find(row => row[0] === cedula);
+            const nombre = user ? user[1] : '';
+            document.getElementById('nombreCompletoCond').value = nombre;
+            localStorage.setItem('nombreCompletoCond', nombre); // Almacenar el nombre en localStorage
+        });
     } else {
-      document.getElementById('nombreCompletoCond').value = '';
+        document.getElementById('nombreCompletoCond').value = '';
     }
-  }
+}
 
 // modal reportar inicio de labores
 document.addEventListener('DOMContentLoaded', (event) => {
@@ -146,6 +162,9 @@ function enviarInicioLabores () {
     alert('Por favor, complete todos los campos antes de enviar.');
     return;
   }
+
+  localStorage.setItem('cedulaUsuario', cedula); // Almacenar la cédula en localStorage
+localStorage.setItem('nombreCompletoCond', nombre); // Almacenar el nombre en localStorage
 
   const values = [
     [cedula, nombre, fechaInicioLabores, horaIniciolabores]
@@ -236,6 +255,7 @@ function enviarLlegadaCargue() {
         console.log(`${response.result.updatedCells} celdas actualizadas.`);
         bloquearBoton('btnllegadaCargue');
         alert('Llegada al cargue enviada');
+        
     }, (error) => {
         console.error('Error al enviar los datos:', error);
         alert('Error al enviar los datos. Por favor, intente nuevamente.');
@@ -678,7 +698,7 @@ function enviarFinLabores() {
         }
     }).then((response) => {
         console.log(`${response.result.updatedCells} celdas actualizadas.`);
-        desbloquearBotones()
+        desbloquearBotones();
         alert('Fin de Labores enviado');
     }, (error) => {
         console.error('Error al enviar los datos:', error);
@@ -688,8 +708,12 @@ function enviarFinLabores() {
 
 // bloquear botones
 function bloquearBoton(id) {
-    document.getElementById(id).disabled = true;
-    localStorage.setItem(id, 'disabled');
+    const boton = document.getElementById(id);
+    if (boton) {
+        boton.disabled = true;
+        boton.classList.add('boton-bloqueado');
+        localStorage.setItem(id, 'disabled');
+    }
 }
 
 // desbloquear botones
@@ -699,19 +723,25 @@ function desbloquearBotones() {
         'btnllegadaDescargue', 'btninicioDescargue', 'btnfinDescargue', 'btnfinLabores'
     ];
     botones.forEach(id => {
-        document.getElementById(id).disabled = false;
-        localStorage.removeItem(id);
+        const boton = document.getElementById(id);
+        if (boton) {
+            boton.disabled = false;
+            boton.classList.remove('boton-bloqueado');
+            localStorage.removeItem(id);
+        }
     });
 }
 
-function verificarEstadoBotones() {
+function verificarEstadoBotonesBloqueados() {
     const botones = [
         'btninicioLabores', 'btnllegadaCargue', 'btninicioCargue', 'btnfinCargue',
         'btnllegadaDescargue', 'btninicioDescargue', 'btnfinDescargue', 'btnfinLabores'
     ];
     botones.forEach(id => {
-        if (localStorage.getItem(id) === 'disabled') {
-            document.getElementById(id).disabled = true;
+        const boton = document.getElementById(id);
+        if (localStorage.getItem(id) === 'disabled' && boton) {
+            boton.disabled = true;
+            boton.classList.add('boton-bloqueado');
         }
     });
 }

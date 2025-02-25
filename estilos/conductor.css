@@ -43,12 +43,19 @@
     text-decoration: none;
     cursor: pointer;
   }
+
+  .boton-bloqueado {
+    background-color: grey;
+    color: rgb(228, 228, 228);
+    cursor: not-allowed;
+  }
   
   body {
     background-color: rgb(221, 64, 161);
     font-family: Arial, sans-serif;
     color: white;
     text-align: center;
+    margin-top: 20px;
 }
 
 legend {
@@ -81,7 +88,7 @@ button {
   color: rgb(0, 0, 0);
   border: none;
   border-radius: 10px;
-  height: 25px;   
+  height: 30px;   
 }
 
 #enviarInicioLabores, #enviarLlegadaCargue, #enviarInicioCargue,
@@ -90,6 +97,7 @@ button {
   background-color: rgb(245, 65, 65);
   color: white;
   border-color: white;
+  height: 30px;
 }
 
 #regresarPrincipalEmpelado {

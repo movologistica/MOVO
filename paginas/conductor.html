@@ -24,14 +24,14 @@
   </fieldset>
 
 
-  <button id="btninicioLabores" class="btnmodal">Reportar inicio de labores</button><br>
-  <button id="btnllegadaCargue" class="btnmodal">Reportar llegada al cargue</button><br>
-  <button id="btninicioCargue" class="btnmodal">Reportar inicio del cargue</button><br>
-  <button id="btnfinCargue" class="btnmodal">Reportar salida del cargue</button><br>
-  <button id="btnllegadaDescargue" class="btnmodal">Reportar llegada al descargue</button><br>
-  <button id="btninicioDescargue" class="btnmodal">Reportar inicio del descargue</button><br>
-  <button id="btnfinDescargue" class="btnmodal">Reportar salida del descargue</button><br>
-  <button id="btnfinLabores" class="btnmodal">Reportar terminación de labores</button><br><br>
+  <button id="btninicioLabores" class="hidden">Reportar inicio de labores</button><br>
+  <button id="btnllegadaCargue" class="hidden">Reportar llegada al cargue</button><br>
+  <button id="btninicioCargue" class="hidden">Reportar inicio del cargue</button><br>
+  <button id="btnfinCargue" class="hidden">Reportar salida del cargue</button><br>
+  <button id="btnllegadaDescargue" class="hidden">Reportar llegada al descargue</button><br>
+  <button id="btninicioDescargue" class="hidden">Reportar inicio del descargue</button><br>
+  <button id="btnfinDescargue" class="hidden">Reportar salida del descargue</button><br>
+  <button id="btnfinLabores" class="hidden">Reportar terminación de labores</button><br><br>
 
   <!--MODAL INICIO LABORES-->
   <div id="modalInicioLabores" class="modal">
@@ -49,7 +49,7 @@
     </div>
   </div>
 
-  <!--MODAL LLEGADA AL CARGUE-->
+  <!--MODAL LLEGADA AL CARGUE-->  
   <div id="modalLlegadaCargue" class="modal">
     <div class="modal-content">
       <span class="close" data-moda="modalinicioLabores">&times;</span>
@@ -57,7 +57,7 @@
       <form>
         <label for="fechaHoraIngreso">Fecha y Hora de Llegada a Cargue:</label><br>
         <input type="datetime-local" id="LlegadaCargue" name="fechaHoraIngreso" required><br><br>
-        <button type="button" id="btnFechaYHoraCargue">Obtener Fecha y Hora actual</button>
+        <button type="button" id="btnFechaYHoraCargue">Obtener Fecha y Hora actual</button><br><br>
         <button id="enviarLlegadaCargue">Enviar</button>
       </form>
     </div>
@@ -71,7 +71,7 @@
       <form>
         <label for="fechaHoraIngreso">Fecha y Hora de Inicio Cargue:</label><br>
         <input type="datetime-local" id="inicioCargue" name="fechaHoraIngreso" required><br><br>
-        <button type="button" id="btnFYHInicioCargue">Obtener Fecha y Hora actual</button>
+        <button type="button" id="btnFYHInicioCargue">Obtener Fecha y Hora actual</button><br><br>
         <button id="enviarInicioCargue">Enviar</button>
       </form>
     </div>
@@ -85,7 +85,7 @@
       <form>
         <label for="fechaHoraFinCargue">Fecha y Hora Fin de Cargue:</label><br>
         <input type="datetime-local" id="finCargue" name="fechaHoraFinCargue" required><br><br>
-        <button type="button" id="btnFYHFinCargue">Obtener Fecha y Hora actual</button>
+        <button type="button" id="btnFYHFinCargue">Obtener Fecha y Hora actual</button><br><br>
         <button id="enviarFinCargue">Enviar</button>
       </form>
     </div>
@@ -113,7 +113,7 @@
       <form>
         <label for="fechaHoraIinicioDes">Fecha y Hora de inicio de Descargue:</label><br>
         <input type="datetime-local" id="InicioDescargue" name="InicioDescargue" required><br><br>
-        <button type="button" id="btnFYHInicioDes">Obtener Fecha y Hora actual</button>
+        <button type="button" id="btnFYHInicioDes">Obtener Fecha y Hora actual</button><br><br>
         <button id="enviarInicioDes">Enviar</button>
       </form>
     </div>
@@ -127,7 +127,7 @@
       <form>
         <label for="fechaHoraFinDes">Fecha y Hora de Fin de Descargue:</label><br>
         <input type="datetime-local" id="FinDescargue" name="FinDescargue" required><br><br>
-        <button type="button" id="btnFYHFinDes">Obtener Fecha y Hora actual</button>
+        <button type="button" id="btnFYHFinDes">Obtener Fecha y Hora actual</button><br><br>
         <button id="enviarFinDes">Enviar</button>
       </form>
     </div>
