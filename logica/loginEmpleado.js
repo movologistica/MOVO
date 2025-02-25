@@ -22,8 +22,6 @@ function initGIS(){
     },
   });
 };
-  
-
 
 function obtenerDatosDeSheets() {
   gapi.client.sheets.spreadsheets.values.get({
