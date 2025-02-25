@@ -8,9 +8,12 @@ let gisInited = false;
 
 //funcionalidad de botones
 document.addEventListener('DOMContentLoaded', () => {
-
+    console.log('DOMContentLoaded event fired');
+    
     const cedula = localStorage.getItem('cedulaUsuario');
     const nombre = localStorage.getItem('nombreCompletoCond');
+    console.log('Cedula recuperada:', cedula);
+    console.log('Nombre recuperado:', nombre);
     if (cedula) {
         document.getElementById('cedulaCond').value = cedula;
         if (nombre) {
