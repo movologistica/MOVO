@@ -1,6 +1,6 @@
 @media screen {
   
-.modal {
+  .modal {
     display: none; /* Oculto por defecto */
     position: fixed; /* Fijo en la pantalla */
     z-index: 1; /* Se muestra por encima de otros elementos */
@@ -11,14 +11,16 @@
     overflow: auto; /* Habilita el scroll si es necesario */
     background-color: rgb(0,0,0); /* Color de fondo */
     background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
-    
+    display: flex; /* Usar flexbox para centrar */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
   }
   
   .modal-content {
-    margin: 50% auto; /* Centrado vertical y horizontal */
     padding: 20px;
     border: 1px solid #888;
     width: 80%; /* Ancho del modal */
+    max-width: 600px; /* Ancho máximo del modal */
     background-color: rgb(221, 64, 161);
     font-family: Arial, sans-serif;
     color: white;
