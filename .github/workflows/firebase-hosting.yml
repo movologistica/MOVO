@@ -24,7 +24,13 @@ jobs:
       - name: Authenticate with Firebase
         run: |
           echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}' > $HOME/firebase-key.json
+          cat $HOME/firebase-key.json
           export GOOGLE_APPLICATION_CREDENTIALS="$HOME/firebase-key.json"
+
+      - name: Set up Firebase credentials
+        run: |
+          echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}' > "$HOME/firebase-key.json"
+          echo "GOOGLE_APPLICATION_CREDENTIALS=$HOME/firebase-key.json" >> $GITHUB_ENV
 
       - name: Deploy to Firebase
         run: firebase deploy --only hosting
