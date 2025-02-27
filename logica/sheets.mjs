@@ -2,6 +2,7 @@ import { google } from "googleapis";
 import express from "express";
 import cors from "cors";
 import fs from "fs";
+import { app, analytics } from './firebaseConfig'
 
 // Configurar Express
 const app = express();
