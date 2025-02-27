@@ -21,15 +21,15 @@ jobs:
       - name: Construir la aplicación
         run: npm run build
 
-      - name: Crear archivo de credenciales Firebase
-        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}' > $HOME/firebase-key.json
-
-      - name: Verificar que el archivo de credenciales existe
-        run: ls -l $HOME/firebase-key.json
+      - name: Instalar Firebase CLI
+        run: npm install -g firebase-tools
 
       - name: Deploy a Firebase Hosting
-        env:
-          GOOGLE_APPLICATION_CREDENTIALS: $HOME/firebase-key.json
-        run: firebase deploy --only hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: ${{ secrets.GITHUB_TOKEN }}
+          firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}
+          channelId: live
+          projectId: base-de-datos-451315
 
 
