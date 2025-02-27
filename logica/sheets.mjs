@@ -9,7 +9,7 @@ app.use(cors());
 app.use(express.json());
 
 // Cargar credenciales
-require('dotenv').config();
+import 'dotenv/config'
 const googleCredentials = JSON.parse(process.env.GOOGLE_CREDENTIALS);
 
 // Ruta de la clave JSON
