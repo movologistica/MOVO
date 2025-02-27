@@ -11,10 +11,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: npm ci && npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+
+      - name: Limpiar caché de npm
+        run: npm cache clean --force
+
+      - name: Instalar dependencias
+        run: npm ci
+
+      - name: Construir la aplicación
+        run: npm run build
+
+      - name: Deploy a Firebase Hosting
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}
           channelId: live
           projectId: base-de-datos-451315
+
