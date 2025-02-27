@@ -3,11 +3,16 @@
   "version": "1.0.0",
   "type": "module",
   "homepage": "https://movologistica.github.io/MOVO/",
+  "scripts": {
+    "start": "node index.js",
+    "build": "echo 'No hay proceso de build definido' && exit 0"
+  },
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.7",
     "express": "^4.18.2",
     "googleapis": "^118.0.0"
-
   }
 }
+
+
