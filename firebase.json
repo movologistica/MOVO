@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "base-de-datos-451315",
     "public": "public",
     "ignore": [
       "firebase.json",
@@ -14,3 +15,4 @@
     ]
   }
 }
+
