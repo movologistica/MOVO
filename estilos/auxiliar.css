@@ -1,0 +1,58 @@
+@media screen {
+    body {
+        background-color: rgb(221, 64, 161);
+        font-family: Arial, sans-serif;
+        color: white;
+        text-align: center;
+    }
+    
+    legend {
+        font-size: 20px;
+    }
+
+    #fechaIngreso, #horaIngreso, #ubicacionIngreso, #cedulaEmpleado, #nombreCompletoEmpleado, #horaSalida, #fechaSalida, #ubicacionSalida {
+        text-align: center;
+        font-size: 16px;
+        border-radius: 20px;
+        border: none;
+        margin-top: 10px;
+        height: 25px;
+        font-weight: bold;
+    }
+
+    label {
+        font-size: 15px;
+    }
+
+    button { 
+        margin-top: 10px;
+        text-align: center;
+        font-weight: bold;
+        background-color: aliceblue;
+        color: blueviolet;
+        border: none;
+        border-radius: 20px;
+        height: 30px;   
+    }
+
+    #enviarIngreso, #enviarSalida {
+        background-color: rgb(245, 65, 65);
+        color: white;
+        border-color: white;
+    }
+
+    h1 { 
+        font-size: 30px;
+    }
+
+    #cerrarSesion {
+        background-color: rgb(245, 65, 65);
+        color: white;
+        border-color: white;
+    }
+
+    #cedulaEmpleado { 
+        margin-bottom: -30px;
+    }
+
+} 

@@ -1,0 +1,40 @@
+@media screen {
+    body {
+        background-color: rgb(221, 64, 161);
+        color: rgb(255, 255, 255);
+        text-align: center;
+    }
+
+    #mine {
+        text-align: center;
+        margin-top: 30%;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 3dvb;
+    }
+    
+    #buttonEmpleado, #buttonTercero, #buttonCliente {
+        border: none;
+        width: 200px;
+        height: 100px;
+        border-radius: 15px;
+        font-size: 30px;
+    }
+
+    #logomine {
+        margin-top: 200px;
+        width: 70%;
+        height: auto;
+    }
+
+    #version {
+        text-align: center;
+        color: white;
+        position: fixed;
+    bottom: 0;
+    width: 100%;
+    font-size: 30px;
+    font-family: Arial, Helvetica, sans-serif;
+
+    }
+
+}

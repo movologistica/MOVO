@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Empleado</title>
+        <link rel="stylesheet" href="../estilos/loginEmpleado.css">
+    </head>
+<body>
+    <div id="formEmpleado">
+        <h1>Iniciar Sesion</h1>
+        <input type="number" id="cedulaEmpleado" placeholder="Cedula">
+        <input type="password" name="password" id="passwordEmpleado" placeholder="Contraseña"><br>
+        <button id="loginEmpleado">Ingresar</button>
+        <button id="regresarAMine">Regresar</button>
+        <img id="logoLoginEmpleado" src="https://movo.com.co/wp-content/uploads/2024/02/LOGO-BLANCO_Mesa-de-trabajo-1-1-e1707339944683.png" alt="logoMovo">
+
+    </div>
+    <script type="module" src="../logica/loginEmpleado.js"></script>
+
+    <script>
+        if ("serviceWorker" in navigator) {
+          navigator.serviceWorker.register("../service-worker.js")
+            .then(() => console.log("Service Worker registrado"))
+            .catch(err => console.error("Error al registrar Service Worker", err));
+        }
+    </script>
+</body>
+</html>

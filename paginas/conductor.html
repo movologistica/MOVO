@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../estilos/conductor.css">
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <title>Urbanos</title>
+</head>
+
+<body>
+  <h1>Registro de Tiempos</h1>
+
+  <!--botones de interaccion-->
+  <fieldset id="condInfo">
+    <legend>Información del Conductor</legend>
+    <label for="cedula" id="titleCedulaCond">Cédula:</label><br>
+    <input type="number" id="cedulaCond" name="cedula" readonly><br><br>
+
+    <label for="nombreCompleto"></label>
+    <input type="text" id="nombreCompletoCond" name="nombreCompleto" readonly><br><br>
+  </fieldset>
+
+
+  <button id="btninicioLabores" class="hidden">Reportar inicio de labores</button><br>
+  <button id="btnllegadaCargue" class="hidden">Reportar llegada al cargue</button><br>
+  <button id="btninicioCargue" class="hidden">Reportar inicio del cargue</button><br>
+  <button id="btnfinCargue" class="hidden">Reportar salida del cargue</button><br>
+  <button id="btnllegadaDescargue" class="hidden">Reportar llegada al descargue</button><br>
+  <button id="btninicioDescargue" class="hidden">Reportar inicio del descargue</button><br>
+  <button id="btnfinDescargue" class="hidden">Reportar salida del descargue</button><br>
+  <button id="btnfinLabores" class="hidden">Reportar terminación de labores</button><br><br>
+
+  <!--MODAL INICIO LABORES-->
+  <div id="modalInicioLabores" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalinicioLabores">&times;</span>
+      <h2>Inicio de labores</h2>
+      <form>
+        <label for="fechaIngresoLabores">Fecha de Ingreso:</label><br>
+        <input type="date" id="icioLabores" name="fechaIngreso" readonly><br><br>
+        <label for="horaIngresoLabores">Hora de Ingreso:</label><br>
+        <input type="time" id="horaIniciolabores" name="horaIngreso" required><br>
+        <button type="button" id="obtnerHoraIngreso">Obtener Hora Actual</button><br><br>
+        <button id="enviarInicioLabores">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL LLEGADA AL CARGUE-->  
+  <div id="modalLlegadaCargue" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalinicioLabores">&times;</span>
+      <h2>Llegada al cargue</h2>
+      <form>
+        <label for="fechaHoraIngreso">Fecha y Hora de Llegada a Cargue:</label><br>
+        <input type="datetime-local" id="LlegadaCargue" name="fechaHoraIngreso" required><br><br>
+        <button type="button" id="btnFechaYHoraCargue">Obtener Fecha y Hora actual</button><br><br>
+        <button id="enviarLlegadaCargue">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL INICIO DE CARGUE-->
+  <div id="modalInicioCargue" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalInicioCargue">&times;</span>
+      <h2>Inicio del cargue</h2>
+      <form>
+        <label for="fechaHoraIngreso">Fecha y Hora de Inicio Cargue:</label><br>
+        <input type="datetime-local" id="inicioCargue" name="fechaHoraIngreso" required><br><br>
+        <button type="button" id="btnFYHInicioCargue">Obtener Fecha y Hora actual</button><br><br>
+        <button id="enviarInicioCargue">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL FIN DE CARGUE-->
+  <div id="modalFinCargue" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalFinCargue">&times;</span>
+      <h2>Finalizacion del cargue</h2>
+      <form>
+        <label for="fechaHoraFinCargue">Fecha y Hora Fin de Cargue:</label><br>
+        <input type="datetime-local" id="finCargue" name="fechaHoraFinCargue" required><br><br>
+        <button type="button" id="btnFYHFinCargue">Obtener Fecha y Hora actual</button><br><br>
+        <button id="enviarFinCargue">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL LLEGADA A DESCARGUE-->
+  <div id="modalLegadaDescargue" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalLegadaDescargue">&times;</span>
+      <h2>Llegada a Descargue</h2>
+      <form>
+        <label for="fechaHoraLlegadaDes">Fecha y Hora de Llegada a Descargue:</label><br>
+        <input type="datetime-local" id="LlegadaDescargue" name="LlegadaDescargue" required><br><br>
+        <button type="button" id="btnFYHLlegadaDes">Obtener Fecha y Hora actual</button><br>
+        <button id="enviarLlegadaDes">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL INICIO A DESCARGUE-->
+  <div id="modalInicioDescargue" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalInicioDescargue">&times;</span>
+      <h2>Inicio del Descargue</h2>
+      <form>
+        <label for="fechaHoraIinicioDes">Fecha y Hora de inicio de Descargue:</label><br>
+        <input type="datetime-local" id="InicioDescargue" name="InicioDescargue" required><br><br>
+        <button type="button" id="btnFYHInicioDes">Obtener Fecha y Hora actual</button><br><br>
+        <button id="enviarInicioDes">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL FIN DESCARGUE-->
+  <div id="modalFinDescargue" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalFinDescargue">&times;</span>
+      <h2>Fin del Descargue</h2>
+      <form>
+        <label for="fechaHoraFinDes">Fecha y Hora de Fin de Descargue:</label><br>
+        <input type="datetime-local" id="FinDescargue" name="FinDescargue" required><br><br>
+        <button type="button" id="btnFYHFinDes">Obtener Fecha y Hora actual</button><br><br>
+        <button id="enviarFinDes">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  <!--MODAL FIN LABORES-->
+  <div id="modalFinLabores" class="modal">
+    <div class="modal-content">
+      <span class="close" data-moda="modalFinLabores">&times;</span>
+      <h2>Finalizacion de labores</h2>
+      <form>
+        <label for="fechaFinLabores">Fecha de Finalizacion:</label><br>
+        <input type="date" id="finLabores" name="fechaFinLabores" readonly><br><br>
+        <label for="horaFinLabores">Hora de Finalizacion:</label><br>
+        <input type="time" id="horaFinlabores" name="horaFinLabores" required><br>
+        <button type="button" id="obtnerHoraFinLabores">Obtener Hora Actual</button><br><br>
+        <button id="enviarFinLabores">Enviar</button>
+      </form>
+    </div>
+  </div>
+
+  
+
+  <!-- Botón de Cerrar Sesión -->
+  <button type="button" id="cerrarSesionCond">Cerrar Sesión</button>
+  <button type="button" id="regresarPrincipalEmpelado">Regresar</button>
+  </form>
+  <script type="module" src="../logica/conductor.js"></script>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("../service-worker.js")
+        .then(() => console.log("Service Worker registrado"))
+        .catch(err => console.error("Error al registrar Service Worker", err));
+    }
+  </script>
+</body>
+
+</html>

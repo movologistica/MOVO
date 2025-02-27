@@ -1,0 +1,13 @@
+@media screen {
+    body {
+        background-color: rgb(221, 64, 161);
+        color: white;
+        text-align: center;
+        margin-top: 50%;
+    }
+
+    #construccionLogo {
+        width: 100px; /* Ajusta el ancho según tus necesidades */
+        height: auto; /* Mantiene la proporción de la imagen */
+      }
+}

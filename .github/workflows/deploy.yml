@@ -1,0 +1,30 @@
+name: Deploy a Google Cloud
+
+on:
+  push:
+    branches:
+      - main  # Se ejecuta cuando subes código a la rama principal
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 📥 Clonar repositorio
+        uses: actions/checkout@v3
+
+      - name: 🔑 Configurar credenciales de Google Cloud
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS_JSON: ${{ secrets.GCP_CREDENTIALS }}
+        run: echo "$GOOGLE_APPLICATION_CREDENTIALS_JSON" > credentials.json
+
+      - name: 🚀 Autenticar en Google Cloud
+        run: |
+          gcloud auth activate-service-account --key-file=credentials.json
+          gcloud config set project tu-proyecto-id
+
+      - name: 📦 Instalar dependencias
+        run: npm install  # O el comando que uses en tu proyecto
+
+      - name: 🚀 Desplegar en GitHub Pages
+        run: npm run deploy

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Principal Empleados</title>
+  <link rel="stylesheet" href="../estilos/principalEmplado.css">
+  <script type="module" src="../logica/principalEmpleado.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client"></script>
+</head>
+<body>
+    <div id="selecEmpleado">
+        <h1>Hola,</h1>
+        <h2 id="nombreCompleto"></h2>
+        <h3>Seleccione su operación:</h3>
+        <button id="conductor">Conductor</button><br>
+        <button id="auxiliar">Auxiliar</button><br>
+        <button id="cSesionEmpleado">Cerrar Sesion</button>
+        <img id="logomine" src="https://movo.com.co/wp-content/uploads/2024/02/LOGO-BLANCO_Mesa-de-trabajo-1-1-e1707339944683.png" alt="logoMovo">
+
+    </div>
+
+    <script>
+      if ("serviceWorker" in navigator) {
+        navigator.serviceWorker.register("../service-worker.js")
+          .then(() => console.log("Service Worker registrado"))
+          .catch(err => console.error("Error al registrar Service Worker", err));
+      }
+    </script>
+</body>
+</html>

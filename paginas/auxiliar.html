@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulario Urbano</title>
+  <link rel="stylesheet" href="../estilos/auxiliar.css">
+  <script type="module" src="../logica/auxiliar.js"></script>
+  <script src="https://apis.google.com/js/api.js"></script>
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <h1 id="h1formUrbano">Registro de Horarios</h1>
+  <form id="formularioUrbano">
+    <!-- Campos de información del usuario -->
+    <fieldset id="infoUser">
+      <legend>Información del Usuario</legend>
+      <label for="cedula" id="titleCedula">Cédula:</label><br>
+      <input type="number" id="cedulaEmpleado" name="cedula" readonly><br><br>
+
+      <label for="nombreCompleto"></label>
+      <input type="text" id="nombreCompletoEmpleado" name="nombreCompleto" readonly><br><br>
+    </fieldset>
+
+    <!-- Campos de Ingreso -->
+    <fieldset id="ingresoFieldset">
+      <legend>Ingreso</legend>
+      <label for="fechaIngreso">Fecha de Ingreso:</label><br>
+      <input type="date" id="fechaIngreso" name="fechaIngreso" readonly><br><br>
+
+      <label for="horaIngreso">Hora de Ingreso:</label><br>
+      <input type="time" id="horaIngreso" name="horaIngreso" required><br>
+      <button type="button" id="obtnerHoraIngreso">Obtener Hora Actual</button><br><br>
+
+      <label for="ubicacionIngreso">Ubicación de Ingreso:</label><br>
+      <input type="text" id="ubicacionIngreso" name="ubicacionIngreso" readonly>
+      <button type="button" id="obtenerCoordenadasIngreso">Obtener Coordenadas</button><br><br>
+
+      <button type="button" id="enviarIngreso">Enviar Ingreso</button>
+    </fieldset>
+
+    <!-- Campos de Salida -->
+    <fieldset id="salidaFieldset">
+      <legend>Salida</legend>
+      <label for="fechaSalida">Fecha de Salida:</label><br>
+      <input type="date" id="fechaSalida" name="fechaSalida" readonly><br><br>
+
+      <label for="horaSalida">Hora de Salida:</label><br>
+      <input type="time" id="horaSalida" name="horaSalida" required><br>
+      <button type="button" id="obtenerHoraSalida">Obtener Hora Actual</button><br><br>
+
+      <label for="ubicacionSalida">Ubicación de Salida:</label>
+      <input type="text" id="ubicacionSalida" name="ubicacionSalida" readonly>
+      <button type="button" id="obtenerCoordenadasSalida">Obtener Coordenadas</button><br><br>
+
+      <button type="button" id="enviarSalida">Enviar Salida</button>
+    </fieldset>
+
+    <!-- Botón de Cerrar Sesión -->
+  <button type="button" id="cerrarSesion">Cerrar Sesión</button>
+  <button type="button" id="regresarPrincipalEmpelado">Regresar</button>
+  </form>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("../service-worker.js")
+        .then(() => console.log("Service Worker registrado"))
+        .catch(err => console.error("Error al registrar Service Worker", err));
+    }
+  </script>
+</body>
+</html>

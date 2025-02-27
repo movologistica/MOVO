@@ -1,0 +1,115 @@
+@media screen {
+  
+  .modal {
+    display: none; /* Oculto por defecto */
+    position: fixed; /* Fijo en la pantalla */
+    left: 0;
+    top: 0;
+    width: 100%; /* Ancho completo */
+    height: 100%; /* Alto completo */
+    background-color: rgb(0,0,0); /* Color de fondo */
+    background-color: rgba(0,0,0,0.4); /* Fondo con opacidad */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    overflow: auto; /* Agregar scroll si es necesario */
+  }
+  
+  .modal-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Ancho del modal */
+    max-width: 600px; /* Ancho máximo del modal */
+    background-color: rgb(221, 64, 161);
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    border-radius: 15px;
+  }
+  
+  .close {
+    color: #000000;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .boton-bloqueado {
+    background-color: grey;
+    color: rgb(228, 228, 228);
+    cursor: not-allowed;
+  }
+  
+  body {
+    background-color: rgb(221, 64, 161);
+    font-family: Arial, sans-serif;
+    color: white;
+    text-align: center;
+    margin-top: 20px;
+}
+
+legend {
+  font-size: 20px;
+}
+
+input {
+  text-align: center;
+        font-size: 16px;
+        border-radius: 20px;
+        border: none;
+        margin-top: 10px;
+        height: 25px;
+        font-weight: bold;
+}
+
+label{
+  font-size: 15px;
+}
+
+h2 {
+  font-size: 20px;
+}
+
+button { 
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  background-color: aliceblue;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 10px;
+  height: 30px;   
+}
+
+#enviarInicioLabores, #enviarLlegadaCargue, #enviarInicioCargue,
+ #enviarSalidaCargue, #enviarFinCargue, #enviarLlegadaDes, #enviarInicioDes,
+ #enviarFinDes, #enviarFinLabores, #cerrarSesionCond {
+  background-color: rgb(245, 65, 65);
+  color: white;
+  border-color: white;
+  height: 30px;
+}
+
+#regresarPrincipalEmpelado {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
+  background-color: aliceblue;
+  color: blueviolet;
+  border: none;
+  border-radius: 10px;
+  height: 25px;
+}
+
+  
+}
