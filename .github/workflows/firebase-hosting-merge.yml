@@ -31,6 +31,8 @@ jobs:
         run: npm run build
 
       - name: Deploy a Firebase Hosting
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/firebase-key.json
         run: firebase deploy --only hosting
 
 
