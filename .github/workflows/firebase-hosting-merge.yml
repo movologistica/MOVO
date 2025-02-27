@@ -21,6 +21,9 @@ jobs:
       - name: Construir la aplicación
         run: npm run build
 
+      - name: Configurar credenciales de Firebase
+        run: echo '${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}' > $HOME/firebase-key.json
+
       - name: Deploy a Firebase Hosting
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
@@ -28,4 +31,7 @@ jobs:
           firebaseServiceAccount: ${{ secrets.FIREBASE_SERVICE_ACCOUNT_BASE_DE_DATOS_451315 }}
           channelId: live
           projectId: base-de-datos-451315
+        env:
+          GOOGLE_APPLICATION_CREDENTIALS: $HOME/firebase-key.json
+
 
